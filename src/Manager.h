@@ -12,7 +12,7 @@ namespace BaseObjectSwapper
 		ConditionalInput(TESObjectREFR* a_ref, TESForm* a_form) :
 			ref(a_ref),
 			base(a_form),
-			currentCell(a_ref->GetParentCell())
+			currentCell(a_ref->parentCell)
 		{
 		}
 

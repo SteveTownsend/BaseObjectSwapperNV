@@ -14,7 +14,14 @@ namespace BaseObjectSwapper
 				const auto& [swapBase, transformData] = Manager::GetSingleton()->GetSwapData(a_ref, base);
 
 				if (swapBase && swapBase != base) {
-					a_ref->InitBaseForm(swapBase);
+					// a_ref->InitBaseForm(swapBase);
+					__asm
+					{
+						push        eax
+						mov         eax, 0x575690
+						mov         ecx, esi
+						call        eax
+					}
 				}
 
 				if (transformData) {

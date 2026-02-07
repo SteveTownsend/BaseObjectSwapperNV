@@ -19,7 +19,11 @@ mono_crash.*
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
+[Dd]ebug GECK/
+[Dd]ebug nr/
 [Rr]elease/
+[Rr]elease GECK/
+[Rr]elease ng/
 [Rr]eleases/
 x64/
 x86/
@@ -361,3 +365,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Imported code
+srellcom/
+common/
+nvse/
+/disasm.txt
+
+#Artifacts
+Data/

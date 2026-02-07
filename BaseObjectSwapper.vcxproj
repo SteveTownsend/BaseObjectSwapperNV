@@ -36,35 +36,35 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release ng|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug ng|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release GECK|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug GECK|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -125,7 +125,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\..\nvse;$(SolutionDir)\..\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\srellcom;$(SolutionDir)\nvse;$(SolutionDir)\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NVSE_PLUGIN_EXAMPLE_EXPORTS;RUNTIME_VERSION=0x040020D0;RUNTIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -145,13 +145,13 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(FalloutNVPath)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
+      <Command>copy "$(TargetPath)" "$(SolutionDir)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug GECK|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\..\nvse;$(SolutionDir)\..\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\srellcom;$(SolutionDir)\nvse;$(SolutionDir)\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NVSE_PLUGIN_EXAMPLE_EXPORTS;EDITOR;EDITOR_VERSION=0x04002060;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -173,14 +173,14 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(FalloutNVPath)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
+      <Command>copy "$(TargetPath)" "$(SolutionDir)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\..\nvse;$(SolutionDir)\..\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\srellcom;$(SolutionDir)\nvse;$(SolutionDir)\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NVSE_PLUGIN_EXAMPLE_EXPORTS;RUNTIME_VERSION=0x040020D0;RUNTIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -199,14 +199,14 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(FalloutNVPath)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
+      <Command>copy "$(TargetPath)" "$(SolutionDir)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release GECK|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\..\nvse;$(SolutionDir)\..\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\srellcom;$(SolutionDir)\nvse;$(SolutionDir)\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NVSE_PLUGIN_EXAMPLE_EXPORTS;EDITOR;EDITOR_VERSION=0x04002060;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -227,13 +227,13 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(FalloutNVPath)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
+      <Command>copy "$(TargetPath)" "$(SolutionDir)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug ng|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\..\nvse;$(SolutionDir)\..\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\srellcom;$(SolutionDir)\nvse;$(SolutionDir)\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NVSE_PLUGIN_EXAMPLE_EXPORTS;NOGORE;RUNTIME_VERSION=0x040020D1;RUNTIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -254,14 +254,14 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(FalloutNVPathD)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
+      <Command>copy "$(TargetPath)" "$(SolutionDir)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release ng|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\..\nvse;$(SolutionDir)\..\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\srellcom;$(SolutionDir)\nvse;$(SolutionDir)\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NVSE_PLUGIN_EXAMPLE_EXPORTS;NOGORE;RUNTIME_VERSION=0x040020D1;RUNTIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -281,53 +281,53 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(FalloutNVPath)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
+      <Command>copy "$(TargetPath)" "$(SolutionDir)\Data\NVSE\Plugins\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\nvse\nvse\containers.cpp" />
-    <ClCompile Include="..\nvse\nvse\GameAPI.cpp" />
-    <ClCompile Include="..\nvse\nvse\GameBSExtraData.cpp">
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\containers.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameAPI.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameBSExtraData.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release GECK|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug GECK|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\nvse\nvse\GameData.cpp" />
-    <ClCompile Include="..\nvse\nvse\GameExtraData.cpp">
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameData.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameExtraData.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release GECK|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug GECK|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\nvse\nvse\GameForms.cpp">
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameForms.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release GECK|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug GECK|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\nvse\nvse\GameObjects.cpp">
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameObjects.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release GECK|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug GECK|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\nvse\nvse\GameOSDepend.cpp">
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameOSDepend.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release GECK|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug GECK|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\nvse\nvse\GameProcess.cpp" />
-    <ClCompile Include="..\nvse\nvse\GameRTTI.cpp" />
-    <ClCompile Include="..\nvse\nvse\GameScript.cpp" />
-    <ClCompile Include="..\nvse\nvse\GameSettings.cpp">
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameProcess.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameRTTI.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameScript.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameSettings.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release GECK|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug GECK|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\nvse\nvse\GameTasks.cpp">
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameTasks.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug GECK|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release GECK|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\nvse\nvse\GameTiles.cpp">
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameTiles.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release GECK|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug GECK|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\nvse\nvse\GameTypes.cpp" />
-    <ClCompile Include="..\nvse\nvse\printf.cpp" />
-    <ClCompile Include="..\nvse\nvse\SafeWrite.cpp" />
-    <ClCompile Include="..\nvse\nvse\Utilities.cpp" />
-    <ClCompile Include="..\nvse\nvse\utility.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\GameTypes.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\printf.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\SafeWrite.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\Utilities.cpp" />
+    <ClCompile Include="$(SolutionDir)\nvse\nvse\utility.cpp" />
     <ClCompile Include="dllmain.c">
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug ng|Win32'">
       </ForcedIncludeFiles>
@@ -348,28 +348,28 @@
     <ClCompile Include="src\SwapData.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\nvse\nvse\CommandTable.h" />
-    <ClInclude Include="..\nvse\nvse\containers.h" />
-    <ClInclude Include="..\nvse\nvse\GameAPI.h" />
-    <ClInclude Include="..\nvse\nvse\GameBSExtraData.h" />
-    <ClInclude Include="..\nvse\nvse\GameData.h" />
-    <ClInclude Include="..\nvse\nvse\GameEffects.h" />
-    <ClInclude Include="..\nvse\nvse\GameExtraData.h" />
-    <ClInclude Include="..\nvse\nvse\GameForms.h" />
-    <ClInclude Include="..\nvse\nvse\GameObjects.h" />
-    <ClInclude Include="..\nvse\nvse\GameOSDepend.h" />
-    <ClInclude Include="..\nvse\nvse\GameProcess.h" />
-    <ClInclude Include="..\nvse\nvse\GameRTTI.h" />
-    <ClInclude Include="..\nvse\nvse\GameScript.h" />
-    <ClInclude Include="..\nvse\nvse\GameSettings.h" />
-    <ClInclude Include="..\nvse\nvse\GameTasks.h" />
-    <ClInclude Include="..\nvse\nvse\GameTiles.h" />
-    <ClInclude Include="..\nvse\nvse\GameTypes.h" />
-    <ClInclude Include="..\nvse\nvse\GameUI.h" />
-    <ClInclude Include="..\nvse\nvse\PluginAPI.h" />
-    <ClInclude Include="..\nvse\nvse\SafeWrite.h" />
-    <ClInclude Include="..\nvse\nvse\Utilities.h" />
-    <ClInclude Include="..\nvse\nvse\utility.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\CommandTable.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\containers.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameAPI.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameBSExtraData.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameData.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameEffects.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameExtraData.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameForms.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameObjects.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameOSDepend.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameProcess.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameRTTI.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameScript.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameSettings.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameTasks.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameTiles.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameTypes.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\GameUI.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\PluginAPI.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\SafeWrite.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\Utilities.h" />
+    <ClInclude Include="$(SolutionDir)\nvse\nvse\utility.h" />
     <ClInclude Include="fn_intro_to_script_functions.h" />
     <ClInclude Include="fn_typed_functions.h" />
     <ClInclude Include="lib\distribution.hpp" />
@@ -387,9 +387,8 @@
     <None Include="exports.def" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\common\common_vc9.vcxproj">
+    <ProjectReference Include="common\common_vc9.vcxproj">
       <Project>{20c6411c-596f-4b85-be4e-8bc91f59d8a6}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,13 @@
 #include "Manager.h"
 
+// from hNVSE
+class ExtraCellRegionList : public BSExtraData {
+public:
+	TESRegionList* regionList;
+
+	static ExtraCellRegionList* Create();
+};
+
 extern NVSEScriptInterface* g_script;
 
 namespace BaseObjectSwapper
@@ -65,7 +73,7 @@ namespace BaseObjectSwapper
 				case kFormType_TESRegion:
 				{
 					if (const auto region = static_cast<TESRegion*>(form)) {
-						if (const auto regionList = currentCell ? GetByTypeCast(currentCell->extraDataList, RegionList) : nullptr) {
+						if (const auto regionList = currentCell ? (ExtraCellRegionList*)(currentCell->extraDataList.GetByType(kExtraData_RegionList)) : nullptr) {
 							if (const auto list = regionList->regionList)
 							{
 								for (const auto& regionInList : list->list)
@@ -77,6 +85,13 @@ namespace BaseObjectSwapper
 								}
 							}
 						}
+					}
+					return false;
+				}
+				case kFormType_TESWorldSpace:
+				{
+					if (const auto world = static_cast<TESWorldSpace*>(form)) {
+						return currentCell ? currentCell->worldSpace == form : false;
 					}
 					return false;
 				}
