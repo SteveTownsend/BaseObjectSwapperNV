@@ -1,24 +1,24 @@
 #pragma once
 
-#include <variant>
-#include <string>
 #include <ranges>
-#include <unordered_set>
+#include <string>
 #include <unordered_map>
+#include <unordered_set>
+#include <variant>
 
-#include "GameObjects.h"
-#include "GameData.h"
-#include "SafeWrite.h"
-#include "Utilities.h"
-#include "PluginAPI.h"
-#include "GameAPI.h"
-#include "GameScript.h"
+#include "nvse/GameAPI.h"
+#include "nvse/GameData.h"
+#include "nvse/GameObjects.h"
+#include "nvse/GameScript.h"
+#include "nvse/PluginAPI.h"
+#include "nvse/SafeWrite.h"
+#include "nvse/Utilities.h"
 
-#include "lib/string.hpp"
-#include "lib/rng.hpp"
 #include "lib/distribution.hpp"
 #include "lib/numeric.hpp"
+#include "lib/rng.hpp"
 #include "lib/simpleINI.hpp"
+#include "lib/string.hpp"
 
 #include "srell.hpp"
 
@@ -35,7 +35,9 @@ using RelData = std::pair<bool, MinMax<T>>;  //relative vs absolute
 
 using FormIDStr = std::variant<std::uint32_t, std::string>;
 
+#if 0
 using FormIDSet = std::unordered_set<std::uint32_t>;
+#endif
 using FormIDOrSet = std::variant<std::uint32_t, FormIDSet>;
 
 template <class T>

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <filesystem>
+#include <string_view>
 #include <variant>
 
 #include "string.hpp"
@@ -8,6 +9,12 @@
 namespace RE
 {
 	using FormID = std::uint32_t;
+	using TESObjectREFR = ::TESObjectREFR;
+	using TESDataHandler = ::DataHandler;
+	using TESForm = ::TESForm;
+	using TESObjectCELL = ::TESObjectCELL;
+	using TESWorldSpace = ::TESWorldSpace;
+	using NiPoint3 = ::NiPoint3;
 }
 
 namespace clib_util::distribution
@@ -45,7 +52,7 @@ namespace clib_util::distribution
 		return configs;
 	}
 
-    inline std::vector<std::filesystem::path> get_configs_paths(const std::filesystem::path& a_folder, std::string_view a_suffix = ""sv, std::string_view a_extension = ".ini"sv)
+	inline std::vector<std::filesystem::path> get_configs_paths(const std::filesystem::path& a_folder, std::string_view a_suffix = ""sv, std::string_view a_extension = ".ini"sv)
 	{
 		std::vector<std::filesystem::path> configs{};
 		for (const auto iterator = std::filesystem::directory_iterator(a_folder); const auto& entry : iterator) {

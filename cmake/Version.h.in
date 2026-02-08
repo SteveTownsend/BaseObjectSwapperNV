@@ -1,0 +1,12 @@
+#pragma once
+
+// clang-format off
+namespace Version
+{
+	inline constexpr std::size_t      MAJOR = @PROJECT_VERSION_MAJOR@;
+	inline constexpr std::size_t      MINOR = @PROJECT_VERSION_MINOR@;
+	inline constexpr std::size_t      PATCH = @PROJECT_VERSION_PATCH@;
+	inline constexpr std::string_view NAME = "@PROJECT_VERSION@";
+	inline constexpr std::string_view PROJECT = "@PROJECT_NAME@";
+}
+// clang-format on

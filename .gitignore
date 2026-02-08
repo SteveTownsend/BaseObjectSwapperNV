@@ -36,6 +36,7 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+cmake/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -368,8 +369,6 @@ FodyWeavers.xsd
 
 # Imported code
 srellcom/
-common/
-nvse/
 /disasm.txt
 
 #Artifacts

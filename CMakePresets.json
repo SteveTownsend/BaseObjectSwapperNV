@@ -1,0 +1,90 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "cmake-dev",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+        "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /external:W0 $penv{CXXFLAGS} /DNVSE_PLUGIN_EXAMPLE_EXPORTS /DRUNTIME_VERSION=0x040020D0 /DRUNTIME /D_CRT_SECURE_NO_WARNINGS",
+        "CMAKE_CXX_FLAGS_RELEASE": "/O2 /DNDEBUG"
+      },
+      "errors": {
+        "deprecated": true
+      },
+      "warnings": {
+        "deprecated": true,
+        "dev": true
+      }
+    },
+    {
+      "name": "vcpkg",
+      "hidden": true,
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "VCPKG_OVERLAY_PORTS": "${sourceDir}/cmake/ports/"
+      }
+    },
+    {
+      "name": "windows",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreaded$<$<CONFIG:Debug>:Debug>",
+        "VCPKG_TARGET_TRIPLET": "x86-windows-static"
+      }
+    },
+    {
+      "name": "vs2026",
+      "hidden": true,
+      "generator": "Visual Studio 18 2026",
+      "toolset": "v145"
+    },
+    {
+      "name": "rel",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/Release"
+    },
+    {
+      "name": "dbg",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/Debug"
+    },
+    {
+      "name": "vs2026-windows-vcpkg-rel",
+      "inherits": [
+        "cmake-dev",
+        "vcpkg",
+        "windows",
+        "vs2026",
+        "rel"
+      ]
+    },
+    {
+      "name": "vs2026-windows-vcpkg-dbg",
+      "inherits": [
+        "cmake-dev",
+        "vcpkg",
+        "windows",
+        "vs2026",
+        "dbg"
+      ]
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "vs2026-windows-vcpkg-rel",
+      "configurePreset": "vs2026-windows-vcpkg-rel",
+      "configuration": "Release"
+    },
+    {
+      "name": "vs2026-windows-vcpkg-dbg",
+      "configurePreset": "vs2026-windows-vcpkg-dbg",
+      "configuration": "Debug"
+    }
+  ]
+}

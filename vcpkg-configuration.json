@@ -1,0 +1,16 @@
+{
+  "registries": [
+    {
+      "kind": "git",
+      "baseline": "1d5364f0ee722ca34b6149fd5663ca7fabeba394",
+      "repository": "https://github.com/voidei/vcpkg-registry",
+      "packages": [
+        "autotoml",
+        "clib-util",
+        "infinity-ui",
+        "mergemapper",
+        "simpleini-po3"
+      ]
+    }
+  ]
+}

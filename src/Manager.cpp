@@ -1,7 +1,10 @@
 #include "Manager.h"
+#include "nvse/PluginAPI.h"
+
 
 // from hNVSE
-class ExtraCellRegionList : public BSExtraData {
+class ExtraCellRegionList : public BSExtraData
+{
 public:
 	TESRegionList* regionList;
 
@@ -21,7 +24,7 @@ namespace BaseObjectSwapper
 	{
 		return TransformData::GetTransforms(a_path, a_str, [&](RE::FormID a_baseID, const TransformData& a_swapData) {
 			transforms[a_baseID].push_back(a_swapData);
-			});
+		});
 	}
 
 	void Manager::get_transforms(const std::string& a_path, const std::string& a_str, const std::vector<FormIDStr>& a_conditionalIDs)
@@ -30,14 +33,14 @@ namespace BaseObjectSwapper
 			for (auto& id : a_conditionalIDs) {
 				transformsConditional[a_baseID][id].push_back(a_swapData);
 			}
-			});
+		});
 	}
 
 	void Manager::get_forms(const std::string& a_path, const std::string& a_str, SwapMap<SwapDataVec>& a_map)
 	{
 		return SwapData::GetForms(a_path, a_str, [&](RE::FormID a_baseID, const SwapData& a_swapData) {
 			a_map[a_baseID].push_back(a_swapData);
-			});
+		});
 	}
 
 	void Manager::get_forms(const std::string& a_path, const std::string& a_str, const std::vector<FormIDStr>& a_conditionalIDs)
@@ -46,13 +49,12 @@ namespace BaseObjectSwapper
 			for (auto& id : a_conditionalIDs) {
 				swapFormsConditional[a_baseID][id].push_back(a_swapData);
 			}
-			});
+		});
 	}
 
 	bool HasKeyword(TESForm* a_form, const std::string& a_keyword)
 	{
-		if (!HasKeywordScript)
-		{
+		if (!HasKeywordScript) {
 			HasKeywordScript = g_script->CompileScript(
 				R"(Begin Function { Ref akForm, string_var asKeyword }
 					SetFunctionValue (HasKeyword akForm (asKeyword))
@@ -71,40 +73,36 @@ namespace BaseObjectSwapper
 			if (const auto form = LookupFormByID(std::get<RE::FormID>(a_data))) {
 				switch (form->typeID) {
 				case kFormType_TESRegion:
-				{
-					if (const auto region = static_cast<TESRegion*>(form)) {
-						if (const auto regionList = currentCell ? (ExtraCellRegionList*)(currentCell->extraDataList.GetByType(kExtraData_RegionList)) : nullptr) {
-							if (const auto list = regionList->regionList)
-							{
-								for (const auto& regionInList : list->list)
-								{
-									if (regionInList == region)
-									{
-										return true;
+					{
+						if (const auto region = static_cast<TESRegion*>(form)) {
+							if (const auto regionList = currentCell ? (ExtraCellRegionList*)(currentCell->extraDataList.GetByType(kExtraData_RegionList)) : nullptr) {
+								if (const auto list = regionList->regionList) {
+									for (const auto& regionInList : list->list) {
+										if (regionInList == region) {
+											return true;
+										}
 									}
 								}
 							}
 						}
+						return false;
 					}
-					return false;
-				}
 				case kFormType_TESWorldSpace:
-				{
-					if (const auto world = static_cast<TESWorldSpace*>(form)) {
-						return currentCell ? currentCell->worldSpace == form : false;
+					{
+						if (const auto world = static_cast<TESWorldSpace*>(form)) {
+							return currentCell ? currentCell->worldSpace == form : false;
+						}
+						return false;
 					}
-					return false;
-				}
 				case kFormType_TESObjectCELL:
-				{
-					return currentCell == form;
-				}
+					{
+						return currentCell == form;
+					}
 				default:
 					break;
 				}
 			}
-		}
-		else {
+		} else {
 			return HasKeyword(ref, std::get<std::string>(a_data));
 		}
 		return false;
@@ -114,7 +112,7 @@ namespace BaseObjectSwapper
 	{
 		std::call_once(init, [this] {
 			LoadForms();
-			});
+		});
 	}
 
 	void Manager::LoadForms()
@@ -156,12 +154,11 @@ namespace BaseObjectSwapper
 			constexpr auto push_filter = [](const std::string& a_condition, std::vector<FormIDStr>& a_processedFilters) {
 				if (const auto processedID = SwapData::GetFormID(a_condition); processedID != 0) {
 					a_processedFilters.emplace_back(processedID);
-				}
-				else {
+				} else {
 					_ERROR("\t\tFilter  [%s] INFO - unable to find form, treating filter as string", a_condition.c_str());
 					a_processedFilters.emplace_back(a_condition);
 				}
-				};
+			};
 
 			for (auto& [section, comment, keyOrder] : sections) {
 				if (string::icontains(section, "|")) {
@@ -186,16 +183,14 @@ namespace BaseObjectSwapper
 							for (const auto& key : values) {
 								get_forms(path, key.pItem, processedConditions);
 							}
-						}
-						else {
+						} else {
 							_MESSAGE("\t\t\t%u transform overrides found", values.size());
 							for (const auto& key : values) {
 								get_transforms(path, key.pItem, processedConditions);
 							}
 						}
 					}
-				}
-				else {
+				} else {
 					_MESSAGE("\t\treading [%s]", section);
 
 					CSimpleIniA::TNamesDepend values;
@@ -208,8 +203,7 @@ namespace BaseObjectSwapper
 							for (const auto& key : values) {
 								get_transforms(path, key.pItem);
 							}
-						}
-						else {
+						} else {
 							_MESSAGE("\t\t\t%u swaps found", values.size());
 							auto& map = get_form_map(section);
 							for (const auto& key : values) {
@@ -231,7 +225,7 @@ namespace BaseObjectSwapper
 
 		_MESSAGE("-CONFLICTS-");
 
-		const auto log_conflicts = [&]<typename T>(std::string_view a_type, const SwapMap<T>&a_map) {
+		const auto log_conflicts = [&]<typename T>(std::string_view a_type, const SwapMap<T>& a_map) {
 			if (a_map.empty()) {
 				return;
 			}
@@ -256,8 +250,7 @@ namespace BaseObjectSwapper
 			}
 			if (!conflicts) {
 				_MESSAGE("\tNo conflicts found");
-			}
-			else {
+			} else {
 				hasConflicts = true;
 			}
 		};
@@ -281,8 +274,8 @@ namespace BaseObjectSwapper
 		if (const auto it = swapFormsConditional.find(static_cast<std::uint32_t>(a_base->refID)); it != swapFormsConditional.end()) {
 			const ConditionalInput input(a_ref, a_base);
 			const auto             result = std::ranges::find_if(it->second, [&](const auto& a_data) {
-				return input.IsValid(a_data.first);
-				});
+                return input.IsValid(a_data.first);
+            });
 
 			if (result != it->second.end()) {
 				for (auto& swapData : result->second | std::ranges::views::reverse) {
@@ -301,8 +294,8 @@ namespace BaseObjectSwapper
 		if (const auto it = transformsConditional.find(a_base->refID); it != transformsConditional.end()) {
 			const ConditionalInput input(a_ref, a_base);
 			const auto             result = std::ranges::find_if(it->second, [&](const auto& a_data) {
-				return input.IsValid(a_data.first);
-				});
+                return input.IsValid(a_data.first);
+            });
 
 			if (result != it->second.end()) {
 				for (auto& transformData : result->second | std::ranges::views::reverse) {
@@ -337,7 +330,7 @@ namespace BaseObjectSwapper
 				}
 			}
 			return { nullptr, std::nullopt };
-			};
+		};
 
 		const auto get_transform = [&](const TESForm* a_form) -> TransformResult {
 			if (const auto it = transforms.find(a_form->refID); it != transforms.end()) {
@@ -348,11 +341,11 @@ namespace BaseObjectSwapper
 				}
 			}
 			return std::nullopt;
-			};
+		};
 
 		constexpr auto has_transform = [](const TransformResult& a_result) {
 			return a_result && a_result->IsValid();
-			};
+		};
 
 		SwapResult swapData{ nullptr, std::nullopt };
 

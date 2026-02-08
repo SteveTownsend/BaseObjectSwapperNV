@@ -25,6 +25,9 @@
     <ClCompile Include="$(SolutionDir)\nvse\nvse\SafeWrite.cpp" />
     <ClCompile Include="$(SolutionDir)\nvse\nvse\Utilities.cpp" />
     <ClCompile Include="$(SolutionDir)\nvse\nvse\utility.cpp" />
+    <ClCompile Include="src\ConditionalData.cpp" />
+    <ClCompile Include="src\Util.cpp" />
+    <ClCompile Include="src\ObjectProperties.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fn_intro_to_script_functions.h" />
@@ -73,6 +76,12 @@
     <ClInclude Include="$(SolutionDir)\nvse\nvse\SafeWrite.h" />
     <ClInclude Include="$(SolutionDir)\nvse\nvse\Utilities.h" />
     <ClInclude Include="$(SolutionDir)\nvse\nvse\utility.h" />
+    <ClInclude Include="src\ConditionalData.h" />
+    <ClInclude Include="RE\NiPoint2.h">
+      <Filter>RE</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Util.h" />
+    <ClInclude Include="src\ObjectProperties.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />
@@ -83,6 +92,9 @@
     </Filter>
     <Filter Include="lib">
       <UniqueIdentifier>{906cd381-9527-47ec-b1fb-752391f4b0a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RE">
+      <UniqueIdentifier>{45f2a954-6328-481e-b6c3-32209014bc91}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

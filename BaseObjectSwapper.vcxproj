@@ -343,9 +343,12 @@
       </ForcedIncludeFiles>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\ConditionalData.cpp" />
     <ClCompile Include="src\Hooks.cpp" />
     <ClCompile Include="src\Manager.cpp" />
+    <ClCompile Include="src\ObjectProperties.cpp" />
     <ClCompile Include="src\SwapData.cpp" />
+    <ClCompile Include="src\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(SolutionDir)\nvse\nvse\CommandTable.h" />
@@ -378,10 +381,14 @@
     <ClInclude Include="lib\rng.hpp" />
     <ClInclude Include="lib\simpleINI.hpp" />
     <ClInclude Include="lib\string.hpp" />
+    <ClInclude Include="RE\NiPoint2.h" />
+    <ClInclude Include="src\ConditionalData.h" />
     <ClInclude Include="src\Defs.h" />
     <ClInclude Include="src\Hooks.h" />
     <ClInclude Include="src\Manager.h" />
+    <ClInclude Include="src\ObjectProperties.h" />
     <ClInclude Include="src\SwapData.h" />
+    <ClInclude Include="src\Util.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />
